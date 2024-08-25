@@ -9,7 +9,7 @@ Example project to explore best practices for full stack website in Golang.
 
 ## Getting Started
 ```bash
-# First setup for mac (for other OS, please refer to respective documentation)
+# First setup (for MacOS)
 brew install go
 brew install go-task
 
@@ -19,12 +19,10 @@ task run          # Run the project
 
 ## Framework/Library Overview
 
-- GoFiber
-- HTML5
+- Standard `net/http` package
+- Standard `html/template` package
 - Tailwind
 - AlpineJS
-- Standard `html/template` package
-
 
 ## Project Checklist
 

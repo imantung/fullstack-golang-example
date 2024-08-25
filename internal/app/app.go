@@ -1,14 +1,15 @@
 package app
 
 import (
-	"github.com/gofiber/fiber/v2"
-	"github.com/imantung/fullstack-golang-example/internal/app/infra/config"
+	"context"
+	"net/http"
 )
 
-func Start(app *fiber.App, cfg *config.Config) error {
-	return app.Listen(cfg.Address)
+func Start(server *http.Server) error {
+	return server.ListenAndServe()
 }
 
-func Stop(app *fiber.App) error {
-	return app.Shutdown()
+func Stop(server *http.Server) error {
+	ctx := context.Background()
+	return server.Shutdown(ctx)
 }

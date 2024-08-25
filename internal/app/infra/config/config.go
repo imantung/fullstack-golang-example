@@ -7,7 +7,7 @@ import (
 
 type (
 	Config struct {
-		Address string `envconfig:"ADDRESS" required:"true" default:":3000"`
+		Address string `envconfig:"ADDRESS" required:"true" default:":8080"`
 	}
 )
 
