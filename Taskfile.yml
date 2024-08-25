@@ -1,0 +1,14 @@
+version: '3'
+
+dotenv: ['.env', '{{.ENV}}/.env.', '{{.HOME}}/.env']
+
+tasks:
+  run:
+    desc: "run the project in dev local environment"
+    cmds:
+      - go run ./cmd/fullstack-golang-example
+  gen-dotenv:
+    desc: "generate .env file from infra.Config struct"
+    cmds:
+      - go run ./tools/dotenv-gen > .env
+      - cp .env .env_sample
