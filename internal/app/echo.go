@@ -15,6 +15,8 @@ func NewEcho(
 	e := echo.New()
 	e.Renderer = NewTemplateRegistry()
 
+	e.Static("/dist", "web/dist")
+	e.GET("/", webCntrl.HomePage)
 	e.GET("/about", webCntrl.AboutPage)
 
 	return e

@@ -12,3 +12,7 @@ tasks:
     cmds:
       - go run ./tools/dotenv-gen > .env
       - cp .env .env_sample
+  watch:
+    dir: web
+    cmds:
+      - npm run watch
