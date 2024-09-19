@@ -7,32 +7,36 @@ Example project to explore best practices for full stack website in Golang.
 - Programming Language: [Go](https://go.dev/) 
 - Task Manager/Build-Tool: [GoTask](https://taskfile.dev/)
 
-## Getting Started
 ```bash
-# First setup (for MacOS)
+# For Mac
 brew install go
 brew install go-task
 
-task --list-all   # Show available tasks
-task run          # Run the project
 ```
 
-## Framework/Library Overview
+## Getting Started
+```bash
+task --list-all   # Show available tasks
+task run          # Run the project
+task watch        # Watch CSS/JS 
+```
 
-- Standard `net/http` package
+## Tech Overview
+
+- [Echo Framework](https://echo.labstack.com/)
 - Standard `html/template` package
-- Tailwind
-- AlpineJS
+- [TailwindCSS](https://tailwindcss.com/)
+- [AlpineJS](https://alpinejs.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
 
 ## Project Checklist
 
-Server side
 - [ ] Embedding static files (go:embed)
+- [ ] Live reload
+- [x] Nested templates -- 
+- [x] Watch CSS/JS
+- [x] Custom Error Page
 
-Frontend Side
-- [ ] Not found page
-- [ ] Navigation bar 
-- [ ] Consume API
 
 ## Author
 
