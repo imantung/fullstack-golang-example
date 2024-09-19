@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{.Title}}</title>
+    <title>{{template "title" .}}</title>
     <link href="./dist/styles/output.css" rel="stylesheet">
 </head>
 
@@ -17,7 +17,7 @@
     <main class="px-6">
         {{template "main" .}}
     </main>
-    <footer class="border-t-2 mt-6 px-6 py-4 font-bold">
+    <footer class="border-t-2 mt-6 px-6 py-4 font-bold text-sm">
         <p>(c) 2024 iman.tung@gmail.com | MIT License</p>
     </footer>
 </body>
