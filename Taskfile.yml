@@ -6,7 +6,7 @@ tasks:
   run:
     desc: "run the project in dev local environment"
     cmds:
-      - go run ./cmd/fullstack-golang-example
+      - go run github.com/air-verse/air@latest
   gen-dotenv:
     desc: "generate .env file from infra.Config struct"
     cmds:

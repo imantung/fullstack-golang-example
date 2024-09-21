@@ -31,7 +31,7 @@ task watch        # Watch CSS/JS
 ## Project Checklist
 
 
-- [ ] Live reload
+- [x] Live reload
 - [x] Nested templates
 - [x] Watch CSS/JS
 - [x] Custom Error Page
