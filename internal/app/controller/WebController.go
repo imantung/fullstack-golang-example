@@ -11,6 +11,7 @@ type (
 	WebController interface {
 		HomePage(c echo.Context) error
 		AboutPage(c echo.Context) error
+		ChildPage(c echo.Context) error
 	}
 	WebControllerImpl struct{}
 )
@@ -27,4 +28,8 @@ func (*WebControllerImpl) HomePage(c echo.Context) error {
 
 func (*WebControllerImpl) AboutPage(c echo.Context) error {
 	return c.Render(http.StatusOK, "about.html", nil)
+}
+
+func (*WebControllerImpl) ChildPage(c echo.Context) error {
+	return c.Render(http.StatusOK, "parent/child.html", nil)
 }

@@ -11,7 +11,6 @@ Example project to explore best practices for full stack website in Golang.
 # For Mac
 brew install go
 brew install go-task
-
 ```
 
 ## Getting Started
@@ -31,11 +30,12 @@ task watch        # Watch CSS/JS
 
 ## Project Checklist
 
-- [ ] Embedding static files (go:embed)
+
 - [ ] Live reload
-- [x] Nested templates -- 
+- [x] Nested templates
 - [x] Watch CSS/JS
 - [x] Custom Error Page
+- [ ] go embed for deployment
 
 
 ## Author

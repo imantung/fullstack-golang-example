@@ -15,13 +15,13 @@ type (
 	}
 )
 
+var (
+	TemplateSource = "web/src/templates/"
+)
+
 func NewTemplateRegistry() *TemplateRegistry {
 	var dict map[string][]string = make(map[string][]string)
-
-	src := "web/src/templates/"
-
-	list := []string{}
-	walkFile(dict, src, "", list)
+	WalkTemplate(dict, TemplateSource, "", []string{})
 
 	templates := map[string]*template.Template{}
 	for k, v := range dict {
@@ -37,7 +37,7 @@ func (t *TemplateRegistry) Render(w io.Writer, name string, data interface{}, c 
 	return t.Templates["error-404.html"].Execute(w, data)
 }
 
-func walkFile(dict map[string][]string, src, parent string, list []string) {
+func WalkTemplate(dict map[string][]string, src, parent string, list []string) {
 	if src == "" {
 		parent = src
 	} else {
@@ -56,7 +56,7 @@ func walkFile(dict map[string][]string, src, parent string, list []string) {
 		}
 
 		if file.IsDir() {
-			walkFile(dict, src, relPath, list)
+			WalkTemplate(dict, src, relPath, list)
 		} else {
 			dict[relPath] = append(list, fullPath)
 		}
