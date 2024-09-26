@@ -2,6 +2,7 @@ package app
 
 import (
 	"net/http"
+	"path/filepath"
 
 	"github.com/imantung/fullstack-golang-example/internal/app/controller"
 	"github.com/imantung/fullstack-golang-example/internal/app/infra/di"
@@ -21,10 +22,11 @@ func NewEcho(
 
 	e.Use(middleware.Recover())
 
-	e.Static("/dist", "web/dist")
+	e.Static("/dist", filepath.Join(RootPath, DistPath))
 	e.GET("/", webCntrl.HomePage)
 	e.GET("/about", webCntrl.AboutPage)
 	e.GET("/child", webCntrl.ChildPage)
+	e.GET("/grand-child", webCntrl.GrandChildPage)
 
 	return e
 }

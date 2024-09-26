@@ -1,4 +1,4 @@
 root = "."
 tmp_dir = "tmp"
-build_cmd = "go build -o ./tmp/main cmd/fullstack-golang-example/*.go  "
+build_cmd = "go build -o ./tmp/main cmd/fullstack-golang-example/*.go"
 run_cmd = "./tmp/main"

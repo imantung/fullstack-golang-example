@@ -35,7 +35,7 @@ task watch        # Watch CSS/JS
 - [x] Nested templates
 - [x] Watch CSS/JS
 - [x] Custom Error Page
-- [ ] go embed for deployment
+- [ ] go embed
 
 
 ## Author
