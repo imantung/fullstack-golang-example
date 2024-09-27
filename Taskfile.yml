@@ -6,7 +6,7 @@ tasks:
   run:
     desc: "run the project in dev local environment"
     cmds:
-      - go run github.com/air-verse/air@latest
+      - air
   gen-dotenv:
     desc: "generate .env file from infra.Config struct"
     cmds:

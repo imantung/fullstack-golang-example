@@ -6,11 +6,13 @@ Example project to explore best practices for full stack website in Golang.
 
 - Programming Language: [Go](https://go.dev/) 
 - Task Manager/Build-Tool: [GoTask](https://taskfile.dev/)
+- Live reload for Go Apps: [Air](https://github.com/air-verse/air)
 
 ```bash
 # For Mac
 brew install go
 brew install go-task
+go install github.com/air-verse/air@latest
 ```
 
 ## Getting Started
@@ -35,7 +37,9 @@ task watch        # Watch CSS/JS
 - [x] Nested templates
 - [x] Watch CSS/JS
 - [x] Custom Error Page
-- [ ] go embed
+- [x] go embed
+- [ ] session
+- [ ] database operation
 
 
 ## Author
