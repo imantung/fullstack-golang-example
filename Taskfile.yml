@@ -13,6 +13,6 @@ tasks:
       - go run ./tools/dotenv-gen > .env
       - cp .env .env_sample
   watch:
-    dir: web
+    dir: internal/app/view
     cmds:
       - npm run watch
