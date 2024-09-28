@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/imantung/fullstack-golang-example/internal/app/infra/di"
 	"github.com/labstack/echo/v4"
 )
 
@@ -25,6 +26,8 @@ var (
 	//go:embed all:view/src/templates/*
 	TemplatesFS embed.FS
 )
+
+var _ = di.Provide(NewTemplateRegistry)
 
 func NewTemplateRegistry() *TemplateRegistry {
 	var dict map[string][]string = make(map[string][]string)
