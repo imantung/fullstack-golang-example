@@ -8,17 +8,20 @@
     <link href="./dist/styles/output.css" rel="stylesheet">
 </head>
 
-<body>
-    <header class="border-b-2 mb-6 px-6 py-4">
-        <a href="#" class="font-bold">
-            Fullstack Golang Example
-        </a>
+<body class="min-h-screen flex flex-col">
+    <header class="fixed w-full">
+        {{template "header" .}}
+        
     </header>
-    <main class="px-6">
+
+    
+    <main class="flex-grow mt-20 sm:px-6 px-6">
         {{template "main" .}}
     </main>
-    <footer class="border-t-2 mt-6 px-6 py-4 font-bold text-sm">
-        <p>(c) 2024 iman.tung@gmail.com | MIT License</p>
+
+    <footer>
+        
+        {{template "footer" .}}
     </footer>
 </body>
 

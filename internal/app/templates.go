@@ -6,6 +6,7 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/labstack/echo/v4"
 )
@@ -48,16 +49,21 @@ func WalkTemplate(dict map[string][]string, parent string, list []string) {
 	files, _ := os.ReadDir(filepath.Join(RootPath, parent))
 
 	for _, file := range files {
-		fullPath := filepath.Join(parent, file.Name())
-		relPath := fullPath[len(TemplatePath):]
-		if file.Name() == "_base.html" {
+		filename := file.Name()
+		fullPath := filepath.Join(parent, filename)
+
+		if strings.HasPrefix(filename, "_") {
 			list = append(list, fullPath)
-			continue
-		}
-		if file.IsDir() {
-			WalkTemplate(dict, relPath, list)
 		} else {
-			dict[relPath] = append(list, fullPath)
+			relPath := fullPath[len(TemplatePath):]
+			if file.IsDir() {
+				WalkTemplate(dict, relPath, list)
+			} else {
+				list2 := make([]string, len(list))
+				copy(list2, list)
+				dict[relPath] = append(list2, fullPath)
+			}
 		}
+
 	}
 }
