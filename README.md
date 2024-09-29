@@ -34,12 +34,12 @@ task watch        # Watch CSS/JS
 
 
 - [x] Live reload
-- [x] Nested templates
+- [x] Nested templates (by project folder)
 - [x] Watch CSS/JS
 - [x] Custom Error Page
-- [x] go embed
-- [ ] session
-- [ ] database operation
+- [x] Go embed
+- [ ] Session
+- [ ] Database operation
 
 
 ## Author
