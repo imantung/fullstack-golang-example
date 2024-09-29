@@ -20,10 +20,9 @@ type (
 
 var (
 	RootPath     = "internal/app/"
-	TemplatePath = "view/src/templates/"
-	DistPath     = "view/dist"
+	TemplatePath = "view/templates/"
 
-	//go:embed all:view/src/templates/*
+	//go:embed all:view/templates/*
 	TemplatesFS embed.FS
 )
 

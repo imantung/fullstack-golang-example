@@ -1,8 +1,6 @@
 package app
 
 import (
-	"path/filepath"
-
 	"github.com/imantung/fullstack-golang-example/internal/app/controller"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -17,7 +15,7 @@ type Router struct {
 func (r *Router) SetRoute(e *echo.Echo) {
 	e.Use(middleware.Recover())
 
-	e.Static("/dist", filepath.Join(RootPath, DistPath))
+	e.Static("/dist", "web/dist")
 	e.GET("/", r.WebCntrl.HomePage)
 	e.GET("/about", r.WebCntrl.AboutPage)
 	e.GET("/child", r.WebCntrl.ChildPage)

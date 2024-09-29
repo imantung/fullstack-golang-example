@@ -22,8 +22,8 @@
     },
     "scripts": {
         "watch": "concurrently \"npm:watch-css\" \"npm:watch-js\"",
-        "watch-css": "npx postcss src/css/input.css -o dist/styles/output.css -w",
-        "watch-js": "npx esbuild src/ts/*.ts --bundle --sourcemap=inline --outdir=dist/js --watch"
+        "watch-css": "npx postcss css/input.css -o ../../../web/dist/styles/output.css -w",
+        "watch-js": "npx esbuild ts/*.ts --bundle --sourcemap=inline --outdir=../../../web/dist/js --watch"
     },
     "type": "module"
 }
