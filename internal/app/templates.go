@@ -2,6 +2,7 @@ package app
 
 import (
 	"embed"
+	"fmt"
 	"html/template"
 	"io"
 	"net/http"
@@ -19,9 +20,9 @@ type (
 )
 
 var (
-	TemplatePath = "view/templates"
+	Root = "view/pages"
 
-	//go:embed all:view/templates/*
+	//go:embed all:view/pages/*
 	TemplatesFS embed.FS
 )
 
@@ -29,12 +30,15 @@ var _ = di.Provide(NewTemplateRegistry)
 
 func NewTemplateRegistry() *TemplateRegistry {
 	var m map[string][]string = make(map[string][]string)
-	WalkTemplate(m, TemplatePath, []string{})
+	WalkTemplates(m, Root, []string{})
 
 	templates := map[string]*template.Template{}
 
 	for k, v := range m {
-		templates[k] = template.Must(template.ParseFS(TemplatesFS, v...))
+		if k == "home.html" {
+			fmt.Println(k, v)
+			templates[k] = template.Must(template.ParseFS(TemplatesFS, v...))
+		}
 	}
 
 	return &TemplateRegistry{Templates: templates}
@@ -47,23 +51,33 @@ func (t *TemplateRegistry) Render(w io.Writer, name string, data interface{}, c 
 	return echo.NewHTTPError(http.StatusInternalServerError, "missing template: "+name)
 }
 
-func WalkTemplate(m map[string][]string, parent string, list []string) {
+func WalkTemplates(m map[string][]string, parent string, bases []string) {
 	entries, _ := TemplatesFS.ReadDir(parent)
+	var comps []string
 	for _, entry := range entries {
-		filename := entry.Name()
-		fullPath := filepath.Join(parent, filename)
+		name := entry.Name()
+		path := filepath.Join(parent, name)
 
-		if strings.HasPrefix(filename, "_") {
-			list = append(list, fullPath)
+		if strings.HasPrefix(name, "_") {
+			if entry.IsDir() {
+				entries, _ := TemplatesFS.ReadDir(path)
+				for _, entry := range entries {
+					if !entry.IsDir() {
+						comps = append(comps, filepath.Join(parent, name, entry.Name()))
+					}
+				}
+			} else {
+				bases = append(bases, path)
+			}
 		} else {
 			if entry.IsDir() {
-				WalkTemplate(m, fullPath, list)
+				WalkTemplates(m, path, bases)
 			} else {
-				list2 := make([]string, len(list))
-				copy(list2, list)
-
-				key := fullPath[len(TemplatePath)+1:]
-				m[key] = append(list2, fullPath)
+				includes := make([]string, len(bases))
+				copy(includes, bases)
+				includes = append(includes, comps...)
+				key := path[len(Root)+1:]
+				m[key] = append(includes, path)
 			}
 		}
 	}
